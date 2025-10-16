@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Sh3rd3n/SchemaValidationTest/refs/heads/main/ProductSpecificationCloudesireExtension.schema.json",
+  "title": "ProductSpecification with Cloudesire Extensions",
+  "description": "TMForum ProductSpecification extended with Cloudesire-specific properties for integration purposes",
+  "anyOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/tmforum-rand/schemas/candidates/Product/ProductSpecification.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "cloudesireProductVersionId": {
+          "type": "number",
+          "description": "Cloudesire product version identifier for synchronization"
+        },
+        "productSpecCharacteristic": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "cloudesireConfigurationParameterId": {
+                    "type": "string",
+                    "description": "Cloudesire configuration parameter identifier"
+                  },
+                  "cloudesireBillingItemId": {
+                    "type": "string",
+                    "description": "Cloudesire billing item identifier"
+                  },
+                  "productSpecCharacteristicValue": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "isDefault": {
+                              "type": "boolean"
+                            },
+                            "unitOfMeasure": {
+                              "type": "string"
+                            },
+                            "valueFrom": {
+                              "type": "number"
+                            },
+                            "valueTo": {
+                              "type": "number"
+                            },
+                            "value": {
+                              "anyOf": [
+                                { "type": "string" },
+                                { "type": "number" }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "cloudesireBillingItemValueId": {
+                              "type": "string",
+                              "description": "Cloudesire billing item value identifier"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
