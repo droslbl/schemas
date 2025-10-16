@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/droslbl/schemas/refs/heads/main/ProductSpecificationCloudesireExtension.schema.json",
+  "$id": "https://raw.githubusercontent.com/droslbl/schemas/refs/heads/master/ProductSpecificationCloudesireExtension.schema.json",
   "title": "ProductSpecification with Cloudesire Extensions",
   "description": "TMForum ProductSpecification extended with Cloudesire-specific properties for integration purposes",
   "anyOf": [
