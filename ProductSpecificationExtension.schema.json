@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "#ProductSpecificationExtension",
+    "title": "ProductSpecificationExtension",
+    "description": "DOME extensions for TMForum Product Specification",
+    "allOf": [
+      {
+        "$ref": "https://raw.githubusercontent.com/DOME-Marketplace/tmf-api/refs/heads/main/DOME/ShareableEntity.schema.json"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "cloudesireProductVersionId": {
+            "type": "number",
+            "description": "CloudeSire product version identifier"
+          },
+          "productSpecCharacteristic": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ProductSpecCharacteristicExtension"
+            },
+            "description": "Product characteristics with DOME extensions"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ProductSpecCharacteristicExtension": {
+        "type": "object",
+        "description": "DOME extensions for ProductSpecCharacteristic",
+        "additionalProperties": true,
+        "properties": {
+          "cloudesireBillingItemId": {
+            "type": "string",
+            "description": "CloudeSire billing item identifier"
+          },
+          "cloudesireConfigurationParameterId": {
+            "type": "string",
+            "description": "CloudeSire configuration parameter identifier"
+          },
+          "productSpecCharacteristicValue": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ProductSpecCharacteristicValueExtension"
+            },
+            "description": "Characteristic values with DOME extensions"
+          }
+        }
+      },
+      "ProductSpecCharacteristicValueExtension": {
+        "type": "object",
+        "description": "DOME extensions for ProductSpecCharacteristicValue",
+        "additionalProperties": true,
+        "properties": {
+          "cloudesireBillingItemValueId": {
+            "type": "string",
+            "description": "CloudeSire billing item value identifier"
+          }
+        }
+      }
+    }
+  }
