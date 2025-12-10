@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ProductSpecificationDOMEExtension",
+  "title": "Product Specification DOME Extension",
+  "description": "Extends TMForum Product Specification with CloudeSire marketplace integration - ONLY defines new extension fields",
+
+  "type": "object",
+  "properties": {
+    "cloudesireProductVersionId": {
+      "type": "number",
+      "description": "CloudeSire product version identifier for marketplace integration"
+    }
+  },
+
+  "definitions": {
+    "ProductSpecCharacteristicExtension": {
+      "type": "object",
+      "description": "CloudeSire-specific extensions for product characteristics",
+      "properties": {
+        "cloudesireBillingItemId": {
+          "type": "string",
+          "description": "CloudeSire billing item identifier"
+        },
+        "cloudesireConfigurationParameterId": {
+          "type": "string",
+          "description": "CloudeSire configuration parameter identifier"
+        }
+      }
+    },
+
+    "ProductSpecCharacteristicValueExtension": {
+      "type": "object",
+      "description": "CloudeSire-specific extensions for characteristic values",
+      "properties": {
+        "cloudesireBillingItemValueId": {
+          "type": "string",
+          "description": "CloudeSire billing item value identifier"
+        }
+      }
+    }
+  }
+}
