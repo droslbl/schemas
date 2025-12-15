@@ -1,212 +1,78 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "#ProductSpecificationExtension",
-  "title": "ProductSpecificationExtension",
-  "description": "DOME extensions for TMForum Product Specification",
+  "$id": "https://raw.githubusercontent.com/Sh3rd3n/SchemaValidationTest/refs/heads/main/ProductSpecificationExtension.schema.json",
+  "title": "ProductSpecification Extension",
+  "description": "Extension schema for ProductSpecification with custom fields",
   "type": "object",
-  "required": ["relatedParty"],
   "properties": {
-    "id": {
-      "type": "string",
-      "description": "Unique identifier"
-    },
-    "href": {
-      "type": "string",
-      "description": "Reference to the entity"
-    },
-    "name": {
-      "type": "string",
-      "description": "Name of the product specification"
-    },
-    "description": {
-      "type": "string",
-      "description": "Description of the product specification"
-    },
-    "version": {
-      "type": "string",
-      "description": "Product specification version"
-    },
-    "lifecycleStatus": {
-      "type": "string",
-      "description": "Lifecycle status"
-    },
-    "validFor": {
-      "type": "object",
-      "description": "Validity period",
-      "properties": {
-        "startDateTime": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "endDateTime": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "relatedParty": {
+    "productSpecCharacteristic_ext": {
       "type": "array",
-      "description": "List of related parties (required for shareable entities)",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "href": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string"
-          },
-          "@referredType": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "@type": {
-      "type": "string",
-      "description": "Type of the entity"
-    },
-    "@schemaLocation": {
-      "type": "string",
-      "description": "Link to the schema describing the extension"
-    },
-    "@baseType": {
-      "type": "string",
-      "description": "Base type of the entity"
-    },
-    "cloudesireProductVersionId": {
-      "type": "number",
-      "description": "CloudeSire product version identifier"
-    },
-    "productSpecCharacteristic": {
-      "type": "array",
-      "description": "Product characteristics with DOME extensions",
+      "description": "Extended product specification characteristics",
       "items": {
         "$ref": "#/definitions/ProductSpecCharacteristicExtension"
       }
+    },
+    "cloudesireProductVersionId": {
+      "type": "integer",
+      "description": "Cloudesire product version identifier"
     }
   },
-  "additionalProperties": false,
   "definitions": {
     "ProductSpecCharacteristicExtension": {
       "type": "object",
-      "description": "DOME extensions for ProductSpecCharacteristic",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "Unique identifier"
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "description": "Name of the characteristic"
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "description": "Description of the characteristic"
-        },
-        "valueType": {
-          "type": "string",
-          "description": "Type of the characteristic value"
-        },
-        "configurable": {
-          "type": "boolean",
-          "description": "Whether the characteristic is configurable"
-        },
-        "validFor": {
-          "type": "object",
-          "properties": {
-            "startDateTime": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "endDateTime": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        },
-        "@type": {
           "type": "string"
-        },
-        "@schemaLocation": {
-          "type": "string"
-        },
-        "@baseType": {
-          "type": "string"
-        },
-        "cloudesireBillingItemId": {
-          "type": "string",
-          "description": "CloudeSire billing item identifier"
         },
         "cloudesireConfigurationParameterId": {
           "type": "string",
-          "description": "CloudeSire configuration parameter identifier"
+          "description": "Cloudesire configuration parameter ID"
+        },
+        "cloudesireBillingItemId": {
+          "type": "string",
+          "description": "Cloudesire billing item ID"
         },
         "productSpecCharacteristicValue": {
           "type": "array",
-          "description": "Characteristic values with DOME extensions",
           "items": {
             "$ref": "#/definitions/ProductSpecCharacteristicValueExtension"
           }
         }
-      },
-      "additionalProperties": false
+      }
     },
     "ProductSpecCharacteristicValueExtension": {
       "type": "object",
-      "description": "DOME extensions for ProductSpecCharacteristicValue",
       "properties": {
-        "value": {
-          "description": "The value of the characteristic"
-        },
         "isDefault": {
-          "type": "boolean",
-          "description": "Whether this is the default value"
+          "type": "boolean"
+        },
+        "value": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "boolean"},
+            {"type": "number"}
+          ]
         },
         "unitOfMeasure": {
-          "type": "string",
-          "description": "Unit of measure"
+          "type": "string"
         },
         "valueFrom": {
-          "type": "string"
+          "type": "number"
         },
         "valueTo": {
-          "type": "string"
-        },
-        "validFor": {
-          "type": "object",
-          "properties": {
-            "startDateTime": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "endDateTime": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        },
-        "@type": {
-          "type": "string"
-        },
-        "@schemaLocation": {
-          "type": "string"
-        },
-        "@baseType": {
-          "type": "string"
+          "type": "number"
         },
         "cloudesireBillingItemValueId": {
           "type": "string",
-          "description": "CloudeSire billing item value identifier"
+          "description": "Cloudesire billing item value ID"
         }
-      },
-      "additionalProperties": false
+      }
     }
   }
 }
